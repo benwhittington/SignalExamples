@@ -4,5 +4,5 @@ Some code for plotting matched filters and LFM chirping as part of Part IV proje
 ## homeCookedFourier
 Home cooked (very) naive Fourier transform.
 
-## Signal Examples
+## signalExamples
 Plots a matched filter and some linear frequency modulated signals.
