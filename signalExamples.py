@@ -62,7 +62,7 @@ def lfm_demo0():
     signal_0 = lfm_signal_e(t, range_0, f0, k, False)
     signal_1 = lfm_signal_e(t, range_1, f0, k, False)
 
-    _, ax = plt.subplots(2)
+    _, ax = plt.subplots(2, figsize=(10, 20))
 
     for a in ax:
         a.set_xticks([], []) 
@@ -80,6 +80,12 @@ def lfm_demo0():
     ax[1].set_xlim(t_min, t_max)
     ax[1].set_title("Freq Domain LFM Data")
 
+    ax[0].set_ylabel("Amplitude")
+    ax[0].set_xlabel("Time")
+
+    ax[1].set_ylabel("Frequency")
+    ax[1].set_xlabel("Time")
+
     plt.show()
 
 
@@ -96,20 +102,26 @@ def lfm_demo1():
 
     signal_0 = lfm_signal_e(t, range_0, f0, k, False)
 
-    _, ax = plt.subplots(2)
+    _, ax = plt.subplots(2, figsize=(10, 20))
 
     ax[0].plot(t, signal_0)
     ax[0].set_title("Time Domain LFM Signal")
     
     ax[1].plot(*lfm_phi(t, range_0, f0, k))
     ax[1].set_xlim(t_min, t_max)
-    ax[1].set_title("Freq Domain LFM Signal")
+    ax[1].set_title("Frequency Domain LFM Signal")
 
     for a in ax:
         a.set_xticks([], []) 
         a.set_yticks([], []) 
         a.set_yticklabels([])
         a.set_xticklabels([])
+
+    ax[0].set_ylabel("Amplitude")
+    ax[0].set_xlabel("Time")
+
+    ax[1].set_ylabel("Frequency")
+    ax[1].set_xlabel("Time")
 
     plt.show()
 
@@ -160,7 +172,7 @@ def main():
     signal_correlated = scipy.signal.correlate(signal_rx, signal_tx_flipped, mode="same")
     signal_correlated_noise = scipy.signal.correlate(signal_rx_noise, signal_tx_flipped, mode="same")
 
-    _, ax = plt.subplots(5, sharex=True)
+    _, ax = plt.subplots(5, sharex=True, figsize=(10, 20))
 
     ax[0].plot(t, get_real_iq(signal_tx))
     ax[0].set_title("Transmitted Signal")
@@ -178,8 +190,12 @@ def main():
     ax[4].set_title("Correlated Signal With Noise")
 
     for a in ax:
+        a.set_xticks([], []) 
+        a.set_yticks([], []) 
         a.set_yticklabels([])
+        a.set_xticklabels([])
 
+    ax[-1].set_xlabel("Time")
     # plt.plot(t, get_real_iq(signal_rx0))
 
     plt.show()
